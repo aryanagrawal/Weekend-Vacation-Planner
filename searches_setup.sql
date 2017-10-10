@@ -32,7 +32,7 @@ CREATE TABLE Hotels (
     User_id     INT
 );
 
-CREATE TABLE Ammenities (
+CREATE TABLE Amenities (
     Type_id     INT     NOT NULL PRIMARY KEY AUTO_INCREMENT,
     Description VARCHAR(64)
 );
@@ -46,10 +46,10 @@ CREATE TABLE Rooms (
     Hotel_id    INT
 );
 
-CREATE TABLE Hotel_Ammenities (
+CREATE TABLE Hotel_Amenities (
     HA_id           INT     NOT NULL PRIMARY KEY AUTO_INCREMENT,
     Hotel_id        INT,
-    Ammenitity_id   INT
+    Amenitity_id   INT
 );
 
 CREATE TABLE Car_Companies (
@@ -63,8 +63,8 @@ CREATE TABLE Car_Rates (
     Rate_id         INT     NOT NULL PRIMARY KEY AUTO_INCREMENT,
     Price           DECIMAL(8,2),
     Currency        VARCHAR(8),
-    Rate_Type       VARCHAR(16), /*Weekly, Daily, etc.*/
-    Car_Category    VARCHAR(32), /*Compact, Fullsize, Standard, etc.*/
+    Rate_type       VARCHAR(16), /*Weekly, Daily, etc.*/
+    Car_category    VARCHAR(32), /*Compact, Fullsize, Standard, etc.*/
     Company_id      INT          /*Index of Cars table which this belongs to*/
 );
 
