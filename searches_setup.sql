@@ -49,7 +49,7 @@ CREATE TABLE Rooms (
 CREATE TABLE Hotel_Amenities (
     HA_id           INT     NOT NULL PRIMARY KEY AUTO_INCREMENT,
     Hotel_id        INT,
-    Amenitity_id   INT
+    Amenity_id   INT
 );
 
 CREATE TABLE Car_Companies (
