@@ -5,7 +5,7 @@
 <title>Travel Planning App</title>
 </head>
 <body>
-<form action="">
+<form id="myForm" action="">
 	<strong>Travel Options:</strong>
 	<input type="checkbox" name="plane"> Plane  
 	<input type="checkbox" name="train"> Train
@@ -132,5 +132,13 @@
 	<br><br><button type="button">Most Popular</button>
 	<input type="submit" value="Search">
 </form>
+
+<script>
+document.getElementById("myForm").onsubmit = function() {myFunction()};
+
+function myFunction() {
+    document.getElementById("myForm").value;
+}
+</script>
 </body>
 </html>
