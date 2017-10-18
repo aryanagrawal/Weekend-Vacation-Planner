@@ -7,8 +7,8 @@
 <body>
 <form id="myForm" action="">
 	<strong>Travel Options:</strong>
-	<input type="checkbox" name="plane"> Plane  
-	<input type="checkbox" name="train"> Train
+	<input type="checkbox" name="plane" value="true"> Plane  
+	<input type="checkbox" name="train" value="true"> Train
 	<br><strong>Include Hotels</strong>
 	<input type="checkbox" name="hotels">  
 	<br><strong>Budget(i.e 450.00):</strong>
@@ -137,7 +137,14 @@
 document.getElementById("myForm").onsubmit = function() {myFunction()};
 
 function myFunction() {
-    document.getElementById("myForm").value;
+	var Result = [""];
+	Result[0] = document.getElementById("myForm").elements[0].checked;
+	Result[1] = document.getElementById("myForm").elements[1].checked;
+	Result[2] = document.getElementById("myForm").elements[2].checked;
+	var i = 3;
+	for(i=3;i<17;i=i+1){
+		Result[i]  = document.getElementById("myForm").elements[i].value;
+	}
 }
 </script>
 </body>
