@@ -16,7 +16,7 @@ public class CarRequest {
 		this.myApi = currSession.myApi;
 		try {
 			CarSearchResponse response = myApi.carRentalAirportSearch(session.apikey, session.airportCode, session.departureDate, session.returnDate, null, null, null, null, null, null, null);
-			System.out.println(response.getResults().get(0).toString());
+//			System.out.println(response.getResults().get(0).toString());
 			this.carList = response.getResults();
 		} catch (ApiException e) {
 			// TODO Auto-generated catch block

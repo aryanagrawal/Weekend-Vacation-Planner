@@ -20,9 +20,9 @@ public class FlightRequest {
 		try {
 			LowFareSearchResponse response = myApi.flightLowFareSearch(currSession.apikey, currSession.origin, currSession.destination, currSession.departureDate, currSession.returnDate, currSession.arriveBy, currSession.returnBy, currSession.adults, currSession.children, currSession.infants, currSession.includeAirlines, currSession.excludeAirlines, currSession.nonstop, currSession.maxPrice, currSession.currency, currSession.travelClass, 1);
 			this.flightList = response.getResults();
-			System.out.println(response.getResults().get(0).toString());
+//			System.out.println(response.getResults().get(0).toString());
 			currSession.setAirportCode(response.getResults().get(0).getItineraries().get(0).getOutbound().getFlights().get(0).getDestination().getAirport().toString());
-			System.out.println(currSession.airportCode);
+//			System.out.println(currSession.airportCode);
 		} catch (ApiException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

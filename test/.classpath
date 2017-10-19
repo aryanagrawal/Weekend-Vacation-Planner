@@ -23,5 +23,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry combineaccessrules="false" kind="src" path="/java-client"/>
+	<classpathentry kind="lib" path="mysql-connector-java-5.0.8-bin.jar"/>
+	<classpathentry kind="lib" path="ojdbc14.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

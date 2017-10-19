@@ -89,7 +89,7 @@ public class Request {
 				
 				LowFareSearchResponse response = myApi.flightLowFareSearch(apikey, origin, destination, departureDate, returnDate, arriveBy, returnBy, adults, children, infants, includeAirlines, excludeAirlines, nonstop, maxPrice, currency, travelClass, 1);
 				List<LowFareSearchResult> temp = response.getResults();
-				System.out.println(temp.get(0).getItineraries().get(0).getOutbound().getFlights().get(0).getDestination().getAirport().toString());
+//				System.out.println(temp.get(0).getItineraries().get(0).getOutbound().getFlights().get(0).getDestination().getAirport().toString());
 				this.airportCode = temp.get(0).getItineraries().get(0).getOutbound().getFlights().get(0).getDestination().getAirport().toString();
 				return temp;
 			} catch (ApiException e) {
