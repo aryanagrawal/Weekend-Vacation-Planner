@@ -1,0 +1,11 @@
+How to run:
+1. To run the web application navigate to Applications.java in src/main/java
+2. Right click -> run as -> Java Application
+3. In your browser go to http://localhost:8080/search
+4. Use these inputs as test
+	Origin: BOS
+	Destination: ORD
+	Departure Date: December 25 2017
+	Return Date: December 26 2017
+5. Hit submit
+6. Hotel and Flight Information will be displayed

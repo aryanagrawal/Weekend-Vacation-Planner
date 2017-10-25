@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Handling Form Submission</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Hotel Result</h1>
+    <p th:text="'Hotel Name: ' + ${search.hotelName}" />
+    <p th:text="'Hotel Street: ' + ${search.hotelStreet}" />
+    <p th:text="'Hotel City: ' + ${search.hotelCity}" />
+    <p th:text="'Hotel State: ' + ${search.hotelState}" />
+    <p th:text="'Hotel ZipCode: ' + ${search.hotelZip}" />
+    <p th:text="'Hotel Country: ' + ${search.hotelCountry}" />
+    <p th:text="'Hotel Price: ' + ${search.hotelPrice}" />
+    
+    
+    <h2>Flight Result</h2>
+    <p th:text="'Departure Flight Airline: ' + ${search.deptFlightAirline}" />
+    <p th:text="'Departure Flight Airport: ' + ${search.deptFlightAirport}" />
+    <p th:text="'Departure Flight Time: ' + ${search.deptFlightTime}" />
+    <br></br>
+    <p th:text="'Return Flight Airline: ' + ${search.returnFlightAirline}" />
+    <p th:text="'Return Flight Airport: ' + ${search.returnFlightAirport}" />
+    <p th:text="'Return Flight Time: ' + ${search.returnFlightTime}" />
+    <br></br>
+    <p th:text="'Total Fligh Price: ' + ${search.totalFlightPrice}" />
+    
+    <a href="/search">Submit another message</a>
+</body>
+</html>
