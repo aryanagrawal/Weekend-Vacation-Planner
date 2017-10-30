@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import database.JDBC;
+
 
 @Controller
 public class SearchController {
@@ -25,7 +27,7 @@ public class SearchController {
     	String deptYear = search.getDeptYear();
     	String deptDate = deptYear + "-" + deptMonthActual + "-" + deptDay;
     	search.setDeptDate(deptDate);
-    	
+
     	String returnMonth = search.getReturnMonth();
     	String returnMonthActual = setMonth(returnMonth);
     	// Error Check to come if returns 0
@@ -44,8 +46,15 @@ public class SearchController {
         String state = tempSession.getHotelResponseList().get(0).getAddress().getRegion();
         String zip = tempSession.getHotelResponseList().get(0).getAddress().getPostalCode();
         String country = tempSession.getHotelResponseList().get(0).getAddress().getCountry();
+        String fullAddress = street + ", " + city + ", " + state + ", " + zip + ", " + country;
         String hotelPrice = tempSession.getHotelResponseList().get(0).getMinDailyRate().getAmount();
         
+        String url = tempSession.getHotelResponseList().get(0).getContacts().toString();
+//        JDBC db = new JDBC();
+//        System.out.println("n\nHOTEL PRICE: " + hotelPrice+"\n\n");
+//        db.addHotel(hotelName, fullAddress, url,Double.parseDouble(hotelPrice), "USD",
+//        			deptDate+ " " + "12:00:00", returnDate+" " + "12:00:00", "ii", 41889);
+//        
         //Set Hotel info in Search()
         search.setHotelName(hotelName);
         search.setHotelStreet(street);
@@ -54,6 +63,7 @@ public class SearchController {
         search.setHotelZip(zip);
         search.setHotelCountry(country);
         search.setHotelPrice(hotelPrice);
+        search.setHotelAddress(fullAddress);
         
         // Create Flight Info
         String departAirline = tempSession.getFlightResponseList().get(0).getItineraries().get(0).getOutbound().getFlights().get(0).getMarketingAirline();
@@ -74,8 +84,53 @@ public class SearchController {
         search.setTotalFlightPrice(flightPrice);
         
         
+        updateDatabase(search);
         return "result";
     }
+    
+    
+    public void updateDatabase(@ModelAttribute Search search){
+    	JDBC database = new JDBC();
+    	/*
+    	 * 					String name,
+							String address,
+							String url,
+							double cost,
+							String currency,
+							String checkin,
+							String checkout,
+							String more_rooms,
+							int userId
+    	 */
+    	String name = search.getHotelName();
+    	String address = search.getHotetAddress();
+    	String url = "NA";
+    	double cost = Double.parseDouble(search.getHotelPrice());
+    	String currency = "USD";
+    	String checkin = search.getDeptFlightTime();
+    	checkin = checkin.substring(0, checkin.indexOf('T')) +" "+ checkin.substring(1+checkin.indexOf('T'))+":00";
+    	String checkout = search.getReturnFlightTime();
+    	checkout = checkout.substring(0, checkout.indexOf('T')) +" "+ checkout.substring(1+checkout.indexOf('T'))+":00";
+    	String more_rooms = "NA";
+    	int userId = 81394;
+    	
+ 
+    	
+    	database.addHotel(name, address, url, cost, currency, checkin, checkout, more_rooms, userId);
+//    	Object object[] = new Object[]{address,
+//    									url,
+//    									cost,
+//    									currency,
+//    									checkin,
+//    									checkout,
+//    									more_rooms,
+//    									userId};
+//    	System.out.println("\n\n");
+//    	for(Object o : object){
+//    		System.out.println("DEBUG	:	" + o.toString());
+//    	}
+    }
+    
     
     public String setMonth(String deptMonth){
     	if (deptMonth.equals("January")){

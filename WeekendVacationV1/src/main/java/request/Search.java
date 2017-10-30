@@ -26,6 +26,7 @@ public class Search {
 	public String hotelState;
 	public String hotelZip;
 	public String hotelCountry;
+	public String hotelAddress;
 	public String hotelPrice;
 	public String deptFlightAirline;
 	public String deptFlightAirport;
@@ -205,6 +206,15 @@ public class Search {
 	public void setHotelCountry(String hotelCountry){
 		this.hotelCountry = hotelCountry;
 	}
+	
+	public String getHotetAddress(){
+		return hotelAddress;
+	}
+	
+	public void setHotelAddress(String hotelAddress){
+		this.hotelAddress = hotelAddress;
+	}
+	
 	public String getHotelPrice(){
 		return hotelPrice;
 	}

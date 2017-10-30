@@ -3,7 +3,6 @@ package database;
 import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Random;
@@ -18,17 +17,19 @@ public class JDBC implements Serializable {
 
 	Connection conn = null;
 
-	private ArrayList<Integer> user_ids;
-	private ArrayList<Integer> hotel_ids;
-	private ArrayList<Integer> room_ids;
-	private ArrayList<Integer> ammenity_ids;
-	private ArrayList<Integer> hotelAmmenities_ids;
-	private ArrayList<Integer> sight_ids;
-	private ArrayList<Integer> carCompany_ids;
-	private ArrayList<Integer> carRate_ids;
+	private ArrayList<Integer> user_ids = new ArrayList<Integer>();
+	private ArrayList<Integer> hotel_ids = new ArrayList<Integer>();
+	private ArrayList<Integer> room_ids = new ArrayList<Integer>();
+	private ArrayList<Integer> ammenity_ids = new ArrayList<Integer>();
+	private ArrayList<Integer> hotelAmmenities_ids = new ArrayList<Integer>();
+	private ArrayList<Integer> sight_ids = new ArrayList<Integer>();
+	private ArrayList<Integer> carCompany_ids = new ArrayList<Integer>();
+	private ArrayList<Integer> carRate_ids = new ArrayList<Integer>();
 	
 	public JDBC() {
-		user_ids = new ArrayList<Integer>();
+		
+		System.out.println("JDBC CONSTRUCTOR");
+		
 		try {
 			Class.forName(JDBC_DRIVER);
 			conn = DriverManager.getConnection(DB_URL, USER, PASS);
@@ -42,15 +43,14 @@ public class JDBC implements Serializable {
 		return user_ids.get(0);
 	
 	}
-	
-	
-	
+
 	private boolean runQuery(String query){
 		try {
 			Statement stmt = conn.createStatement();
 			stmt.executeUpdate(query);
 			return true;
 		} catch (Exception e) {
+			e.printStackTrace();
 			return false;
 		}
 	}
@@ -124,6 +124,7 @@ public class JDBC implements Serializable {
 							int userId){
 		
 		if(!user_ids.contains(userId)) return false;
+		System.out.println("ADDHOTEL FUNCTION");
 		int hotelId = getHotelId();
 		String query = "INSERT INTO Hotels VALUES"
 				+ "("+hotelId+", '"+name+"', '"+address+"' ,'"+url+"', "+
