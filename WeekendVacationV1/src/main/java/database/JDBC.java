@@ -1,10 +1,12 @@
 package database;
 
 import java.io.Serializable;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -79,7 +81,6 @@ public class JDBC implements Serializable {
 			}
 		}
 	}
-	
 
 	// Add a new Flight to the Database
 	public boolean addFlight(int flight_id,
@@ -273,9 +274,7 @@ public class JDBC implements Serializable {
 		
 		return runQuery(query);
 	}
-	
 
-	/////////////////////////
 	// functions to get data from the database
 	public int getUserID(int member_id){
 
@@ -288,10 +287,7 @@ public class JDBC implements Serializable {
 			}
 		} catch(Exception e){
 			e.printStackTrace();
-			return -1;
 		}
-		
 		return -1;
 	}
-
 }
