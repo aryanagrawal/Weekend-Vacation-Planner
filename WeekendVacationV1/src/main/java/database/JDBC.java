@@ -3,6 +3,7 @@ package database;
 import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Random;
@@ -27,9 +28,6 @@ public class JDBC implements Serializable {
 	private ArrayList<Integer> carRate_ids = new ArrayList<Integer>();
 	
 	public JDBC() {
-		
-		System.out.println("JDBC CONSTRUCTOR");
-		
 		try {
 			Class.forName(JDBC_DRIVER);
 			conn = DriverManager.getConnection(DB_URL, USER, PASS);
@@ -54,16 +52,20 @@ public class JDBC implements Serializable {
 			return false;
 		}
 	}
-	
+
 	// Add a new User to the Database
-	public boolean addUser(String session_id, boolean isMember, int member_id) {
+	public int addUser(String session_id, boolean isMember, int member_id) {
 		int member = (isMember) ? 1 : 0;
 		int userId = getUserId();
 
 		String query = "INSERT INTO Users " + "VALUES(" + userId + ", '" + session_id + "', " + member + ", "
 				+ member_id + ")";
 
-		return runQuery(query);
+		System.out.println(userId);
+		
+		if(runQuery(query))
+			return userId;
+		else return -1;
 	}
 	// Generate a new 5 digit unique user Id
 	private int getUserId() {
@@ -89,11 +91,6 @@ public class JDBC implements Serializable {
 							 double cost,
 							 String currency,
 							 int user_id){
-		
-		if(!user_ids.contains(user_id)) return false;
-		if(departure.length() > 4 || arrival.length() > 4) return false;
-		// 2017-11-11 12:12:40		-> 		Date Time Format
-		
 		String query = "INSERT INTO Flights VALUES "
 						+ "("+flight_id+", '"+departure+"', '"+arrival+"', "
 						+ "'"+airline+"', '"+depart_time+"', '"+arrival_time+"', "
@@ -113,7 +110,7 @@ public class JDBC implements Serializable {
 				}
 			}
 		}
-	public boolean addHotel(String name,
+	public int addHotel(String name,
 							String address,
 							String url,
 							double cost,
@@ -122,19 +119,19 @@ public class JDBC implements Serializable {
 							String checkout,
 							String more_rooms,
 							int userId){
-		
-		if(!user_ids.contains(userId)) return false;
-		System.out.println("ADDHOTEL FUNCTION");
+		if(!user_ids.contains(userId)) return -1;
 		int hotelId = getHotelId();
+
 		String query = "INSERT INTO Hotels VALUES"
 				+ "("+hotelId+", '"+name+"', '"+address+"' ,'"+url+"', "+
 				cost+", '"+currency+"', '"+checkin+"', '"+checkout+"', '"+more_rooms+"', "+
 				userId+")";
 
-		return runQuery(query);
+		if(runQuery(query))
+			return hotelId;
+		else return -1;
 	}
-	
-	
+
 	private int getRoomId() {
 		Random generator = new Random();
 		int key;
@@ -160,9 +157,7 @@ public class JDBC implements Serializable {
 		
 		return runQuery(query);
 	}
-	
-	
-	
+
 	private int getAmmenityId() {
 		Random generator = new Random();
 		int key;
@@ -174,11 +169,14 @@ public class JDBC implements Serializable {
 			}
 		}
 	}
-	public boolean addAmmenity(String description){
+	public int addAmmenity(String description){
+		
 		int ammenityId = getAmmenityId();
 		String query = "INSERT INTO Ammenities VALUES ("+ammenityId+", '"+description+"')";
 		
-		return runQuery(query);
+		if(runQuery(query))
+			return ammenityId;
+		return -1;
 	}
 	
 	private int getHotelAmmenityId() {
@@ -201,9 +199,7 @@ public class JDBC implements Serializable {
 		
 		return runQuery(query);
 	}
-	
-	
-	
+
 	private int getSightId() {
 		Random generator = new Random();
 		int key;
@@ -229,8 +225,6 @@ public class JDBC implements Serializable {
 						+", '"+description+"', '"+wiki+"', "+userId+")";
 		return runQuery(query);
 	}
-	
-	
 	
 	private int getCarCompanyId() {
 		Random generator = new Random();
@@ -279,4 +273,25 @@ public class JDBC implements Serializable {
 		
 		return runQuery(query);
 	}
+	
+
+	/////////////////////////
+	// functions to get data from the database
+	public int getUserID(int member_id){
+
+		String query = "SELECT User_id FROM Users WHERE Member_id="+member_id;
+		try{
+			Statement stmt = conn.createStatement();
+			ResultSet set = stmt.executeQuery(query);
+			if(set.next()){
+				return set.getInt(1);
+			}
+		} catch(Exception e){
+			e.printStackTrace();
+			return -1;
+		}
+		
+		return -1;
+	}
+
 }

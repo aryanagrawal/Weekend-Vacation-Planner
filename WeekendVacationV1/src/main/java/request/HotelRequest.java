@@ -17,7 +17,7 @@ public class HotelRequest {
 		try {
 			HotelSearchResponse response = myApi.hotelAirportSearch(session.apikey, session.airportCode, session.departureDate, session.returnDate, 30, null, null, null, null, 5, null, null, null);
 			 this.hotelList = response.getResults();
-			System.out.println(response.getResults().get(0).toString());
+//			System.out.println(response.getResults().get(0).toString());
 		} catch (ApiException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -9,11 +9,20 @@ import io.swagger.client.model.HotelPropertyResponse;
 
 public class UserSearch {
 	
-	private int membershipId;
-	private boolean isMember;
+	public int membershipID;
+	public boolean isMember;
 	
 	// true if member
 	// false if not
+	
+	public void setMembershipID(int id){
+		this.membershipID = id;
+	}
+	
+	public int getMembershipID(){
+		return membershipID;
+	}
+	
 	public void setMemberShip(boolean isMember){
 		this.isMember = isMember;
 	}
@@ -36,8 +45,12 @@ public class UserSearch {
 		}
 	}
 	
+	public int getMemID(){
+		return membershipID;
+	}
+	
 	public int setMemberShipId(){
-		this.membershipId = getMemberShipId();
-		return membershipId;
+		this.membershipID = getMemberShipId();
+		return membershipID;
 	}
 }

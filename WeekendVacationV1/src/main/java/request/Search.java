@@ -36,7 +36,14 @@ public class Search {
 	public String returnFlightTime;
 	public String totalFlightPrice;
 	
+	public String membershipID;
+	public String getmembershipID(){
+		return membershipID;
+	}
 	
+	public void setmembershipID(String membershipID){
+		this.membershipID = membershipID;
+	}
 	
 	/*
 	 * HotelList
