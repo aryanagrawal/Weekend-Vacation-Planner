@@ -1,8 +1,11 @@
 package request;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import io.swagger.client.model.Amenity;
 import io.swagger.client.model.HotelPropertyResponse;
+import io.swagger.client.model.HotelRoom;
 
 public class Search {
 	
@@ -40,10 +43,42 @@ public class Search {
 	public String getmembershipID(){
 		return membershipID;
 	}
-	
 	public void setmembershipID(String membershipID){
 		this.membershipID = membershipID;
 	}
+	
+	
+	
+	/*
+	 * Object[] hotelDetails = new Object[]{
+            	hotelName,
+            	fullAddress,
+            	url,
+            	hotelPrice,
+            	currency,
+            	linkToMoreRooms
+            };
+
+            List<HotelRoom> rooms = hotel.getRooms();
+            List<Amenity> amenities = hotel.getAmenities();
+            hotels.add(new Object[]{
+            		amenities, hotelDetails, rooms
+            });
+	 */
+	public ArrayList<Object[]> hotels = new ArrayList<Object[]>();
+	public void setHotels(ArrayList<Object[]> hotels){
+		this.hotels = hotels;
+	}
+	public ArrayList<Object[]> getHotels(){
+		return hotels;
+	}
+	
+	
+	
+	
+	
+	
+	
 	
 	/*
 	 * HotelList

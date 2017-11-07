@@ -27,7 +27,10 @@ import io.swagger.client.model.LowFareSearchResult;
 public class SearchController {
 
 	private ArrayList<Integer> member_ids = new ArrayList<Integer>();
-	JDBC database = new JDBC();
+	
+	private JDBC database = new JDBC();
+	
+
 	
     @GetMapping("/search")
     public String searchForm(Model model) {
@@ -41,7 +44,6 @@ public class SearchController {
     	// departure
     	String deptMonth = search.getDeptMonth();
     	String deptMonthActual = setMonth(deptMonth);
-    	// Error Check to come if returns 0
     	String deptDay = search.getDeptDay();
     	String deptYear = search.getDeptYear();
     	String deptDate = deptYear + "-" + deptMonthActual + "-" + deptDay;
@@ -50,7 +52,6 @@ public class SearchController {
     	// return
     	String returnMonth = search.getReturnMonth();
     	String returnMonthActual = setMonth(returnMonth);
-    	// Error Check to come if returns 0
     	String returnDay = search.getReturnDay();
     	String returnYear = search.getReturnYear();
     	String returnDate = returnYear + "-" + returnMonthActual + "-" + returnDay;
@@ -58,9 +59,8 @@ public class SearchController {
     	
     	// from, to, depart, return
         MySearch tempSession = new MySearch(search.getOrigin(), search.getDestination(), search.getDeptDate(),search.getReturnDate());
-        search.setHotelList(tempSession.getHotelResponseList());
+//        search.setHotelList(tempSession.getHotelResponseList());
 
-        
         // get hotels
         ArrayList<Object[]> hotels = new ArrayList<Object[]>();
 
