@@ -74,6 +74,21 @@ public class Search {
 	}
 	
 	
+	public  ArrayList<Object[]> outboundFlights = new ArrayList<Object[]>();
+	public void setOutboundFlights(ArrayList<Object[]> outboundFlights){
+		this.outboundFlights = outboundFlights;
+	}
+	public ArrayList<Object[]> getOutboundFlights(){
+		return outboundFlights;
+	}
+	
+	public  ArrayList<Object[]> inboundFlights = new ArrayList<Object[]>();
+	public void setInboundFlights(ArrayList<Object[]> inboundFlights){
+		this.inboundFlights = inboundFlights;
+	}
+	public ArrayList<Object[]> getInboundFlights(){
+		return inboundFlights;
+	}
 	
 	
 	
