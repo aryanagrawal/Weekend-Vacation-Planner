@@ -27,7 +27,10 @@ import io.swagger.client.model.LowFareSearchResult;
 public class SearchController {
 
 	private ArrayList<Integer> member_ids = new ArrayList<Integer>();
-	JDBC database = new JDBC();
+	
+	private JDBC database = new JDBC();
+	
+
 	
     @GetMapping("/search")
     public String searchForm(Model model) {
@@ -41,7 +44,6 @@ public class SearchController {
     	// departure
     	String deptMonth = search.getDeptMonth();
     	String deptMonthActual = setMonth(deptMonth);
-    	// Error Check to come if returns 0
     	String deptDay = search.getDeptDay();
     	String deptYear = search.getDeptYear();
     	String deptDate = deptYear + "-" + deptMonthActual + "-" + deptDay;
@@ -50,7 +52,6 @@ public class SearchController {
     	// return
     	String returnMonth = search.getReturnMonth();
     	String returnMonthActual = setMonth(returnMonth);
-    	// Error Check to come if returns 0
     	String returnDay = search.getReturnDay();
     	String returnYear = search.getReturnYear();
     	String returnDate = returnYear + "-" + returnMonthActual + "-" + returnDay;
@@ -58,9 +59,8 @@ public class SearchController {
     	
     	// from, to, depart, return
         MySearch tempSession = new MySearch(search.getOrigin(), search.getDestination(), search.getDeptDate(),search.getReturnDate());
-        search.setHotelList(tempSession.getHotelResponseList());
+//        search.setHotelList(tempSession.getHotelResponseList());
 
-        
         // get hotels
         ArrayList<Object[]> hotels = new ArrayList<Object[]>();
 
@@ -98,34 +98,36 @@ public class SearchController {
             });
         }
         
-        String hotelName = tempSession.getHotelResponseList().get(0).getPropertyName();
-        String street = tempSession.getHotelResponseList().get(0).getAddress().getLine1();
-        String city = tempSession.getHotelResponseList().get(0).getAddress().getCity();
-        String state = tempSession.getHotelResponseList().get(0).getAddress().getRegion();
-        String zip = tempSession.getHotelResponseList().get(0).getAddress().getPostalCode();
-        String country = tempSession.getHotelResponseList().get(0).getAddress().getCountry();
-        String fullAddress = street + ", " + city + ", " + state + ", " + zip + ", " + country;
-        String hotelPrice = tempSession.getHotelResponseList().get(0).getMinDailyRate().getAmount();
-        String url = tempSession.getHotelResponseList().get(0).getContacts().toString();
-//
-//        //Set Hotel info in Search()
-        search.setHotelName(hotelName);
-        search.setHotelStreet(street);
-        search.setHotelCity(city);
-        search.setHotelState(state);
-        search.setHotelZip(zip);
-        search.setHotelCountry(country);
-        search.setHotelPrice(hotelPrice);
-        search.setHotelAddress(fullAddress);
+        search.setHotels(hotels);
+        
+//        String hotelName = tempSession.getHotelResponseList().get(0).getPropertyName();
+//        String street = tempSession.getHotelResponseList().get(0).getAddress().getLine1();
+//        String city = tempSession.getHotelResponseList().get(0).getAddress().getCity();
+//        String state = tempSession.getHotelResponseList().get(0).getAddress().getRegion();
+//        String zip = tempSession.getHotelResponseList().get(0).getAddress().getPostalCode();
+//        String country = tempSession.getHotelResponseList().get(0).getAddress().getCountry();
+//        String fullAddress = street + ", " + city + ", " + state + ", " + zip + ", " + country;
+//        String hotelPrice = tempSession.getHotelResponseList().get(0).getMinDailyRate().getAmount();
+//        String url = tempSession.getHotelResponseList().get(0).getContacts().toString();
+////
+////        //Set Hotel info in Search()
+//        search.setHotelName(hotelName);
+//        search.setHotelStreet(street);
+//        search.setHotelCity(city);
+//        search.setHotelState(state);
+//        search.setHotelZip(zip);
+//        search.setHotelCountry(country);
+//        search.setHotelPrice(hotelPrice);
+//        search.setHotelAddress(fullAddress);
         
         // Create Flight Info
-        String departAirline = tempSession.getFlightResponseList().get(0).getItineraries().get(0).getOutbound().getFlights().get(0).getMarketingAirline();
-        String departAirport = tempSession.getFlightResponseList().get(0).getItineraries().get(0).getOutbound().getFlights().get(0).getOrigin().getAirport();
-        String departtTime = tempSession.getFlightResponseList().get(0).getItineraries().get(0).getOutbound().getFlights().get(0).getDepartsAt();
-        String returnAirline = tempSession.getFlightResponseList().get(0).getItineraries().get(0).getInbound().getFlights().get(0).getMarketingAirline();
-        String returnAirport = tempSession.getFlightResponseList().get(0).getItineraries().get(0).getInbound().getFlights().get(0).getOrigin().getAirport();
-        String returnTime = tempSession.getFlightResponseList().get(0).getItineraries().get(0).getInbound().getFlights().get(0).getDepartsAt();
-        String flightPrice = tempSession.getFlightResponseList().get(0).getFare().getTotalPrice();
+//        String departAirline = tempSession.getFlightResponseList().get(0).getItineraries().get(0).getOutbound().getFlights().get(0).getMarketingAirline();
+//        String departAirport = tempSession.getFlightResponseList().get(0).getItineraries().get(0).getOutbound().getFlights().get(0).getOrigin().getAirport();
+//        String departtTime = tempSession.getFlightResponseList().get(0).getItineraries().get(0).getOutbound().getFlights().get(0).getDepartsAt();
+//        String returnAirline = tempSession.getFlightResponseList().get(0).getItineraries().get(0).getInbound().getFlights().get(0).getMarketingAirline();
+//        String returnAirport = tempSession.getFlightResponseList().get(0).getItineraries().get(0).getInbound().getFlights().get(0).getOrigin().getAirport();
+//        String returnTime = tempSession.getFlightResponseList().get(0).getItineraries().get(0).getInbound().getFlights().get(0).getDepartsAt();
+//        String flightPrice = tempSession.getFlightResponseList().get(0).getFare().getTotalPrice();
 //        
         
         ArrayList<Object[]> outboundFlights = new ArrayList<Object[]>();
@@ -177,14 +179,17 @@ public class SearchController {
         }
         
         //Set Flight info in Search()
-        search.setDeptFlightAirline(departAirline);
-        search.setDeptFlightAirport(departAirport);
-        search.setDeptFlightTime(departtTime);
-        search.setReturnFlightAirline(returnAirline);
-        search.setReturnFlightAirport(returnAirport);
-        search.setReturnFlightTime(returnTime);
-        search.setTotalFlightPrice(flightPrice);
+//        search.setDeptFlightAirline(departAirline);
+//        search.setDeptFlightAirport(departAirport);
+//        search.setDeptFlightTime(departtTime);
+//        search.setReturnFlightAirline(returnAirline);
+//        search.setReturnFlightAirport(returnAirport);
+//        search.setReturnFlightTime(returnTime);
+//        search.setTotalFlightPrice(flightPrice);
         
+        search.setOutboundFlights(outboundFlights);
+        search.setInboundFlights(inboundFlights);
+
         String session_id = getDate();
     	int memberID=-1;
     	while(true){

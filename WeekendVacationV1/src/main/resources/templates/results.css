@@ -1,0 +1,21 @@
+#Header{
+    margin-left: 2%;
+}
+
+#Hotel{
+    float: left;
+    width: 45%;
+    height: 100%;
+    padding: 2%;
+    background-color: rgb(200, 200, 255);   
+    border-radius: 25px;
+}
+
+#Flight{
+    float: right;
+    width: 45%;
+    height: 100%;
+    padding: 2%;
+    background-color: rgb(200, 200, 255);
+    border-radius: 25px;
+}

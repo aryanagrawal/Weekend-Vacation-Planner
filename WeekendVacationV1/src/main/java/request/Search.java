@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import io.swagger.client.model.Amenity;
 import io.swagger.client.model.HotelPropertyResponse;
+import io.swagger.client.model.HotelRoom;
 
 public class Search {
 	
@@ -84,7 +86,49 @@ public class Search {
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////////
+	
 
+	
+	/*
+	 * Object[] hotelDetails = new Object[]{
+            	hotelName,
+            	fullAddress,
+            	url,
+            	hotelPrice,
+            	currency,
+            	linkToMoreRooms
+            };
+
+            List<HotelRoom> rooms = hotel.getRooms();
+            List<Amenity> amenities = hotel.getAmenities();
+            hotels.add(new Object[]{
+            		amenities, hotelDetails, rooms
+            });
+	 */
+	public ArrayList<Object[]> hotels = new ArrayList<Object[]>();
+	public void setHotels(ArrayList<Object[]> hotels){
+		this.hotels = hotels;
+	}
+	public ArrayList<Object[]> getHotels(){
+		return hotels;
+	}
+	
+	
+	public  ArrayList<Object[]> outboundFlights = new ArrayList<Object[]>();
+	public void setOutboundFlights(ArrayList<Object[]> outboundFlights){
+		this.outboundFlights = outboundFlights;
+	}
+	public ArrayList<Object[]> getOutboundFlights(){
+		return outboundFlights;
+	}
+	
+	public  ArrayList<Object[]> inboundFlights = new ArrayList<Object[]>();
+	public void setInboundFlights(ArrayList<Object[]> inboundFlights){
+		this.inboundFlights = inboundFlights;
+	}
+	public ArrayList<Object[]> getInboundFlights(){
+		return inboundFlights;
+	}
 	
 	
 	/*
