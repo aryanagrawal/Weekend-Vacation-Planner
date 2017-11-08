@@ -9,20 +9,21 @@ import io.swagger.client.model.HotelPropertyResponse;
 
 public class UserSearch {
 	
-	public int membershipID;
-	public boolean isMember;
-	
+	private int membershipId;
+	private boolean isMember;
+	ArrayList<Integer> membershipIds = new ArrayList<Integer>();
+
+	public void checkmembership(){
+		for(int i=0;i<membershipIds.size();i++){
+			if(this.membershipId == membershipIds.get(i)){
+				setMemberShip(true);
+				return;
+			}
+		}
+		setMemberShip(true);//only set to true for debugging purposes
+	}
 	// true if member
 	// false if not
-	
-	public void setMembershipID(int id){
-		this.membershipID = id;
-	}
-	
-	public int getMembershipID(){
-		return membershipID;
-	}
-	
 	public void setMemberShip(boolean isMember){
 		this.isMember = isMember;
 	}
@@ -31,8 +32,6 @@ public class UserSearch {
 		return this.isMember;
 	}
 	
-	
-	ArrayList<Integer> membershipIds = new ArrayList<Integer>();
 	private int getMemberShipId() {
 		Random generator = new Random();
 		int key;
@@ -45,12 +44,11 @@ public class UserSearch {
 		}
 	}
 	
-	public int getMemID(){
-		return membershipID;
-	}
-	
 	public int setMemberShipId(){
-		this.membershipID = getMemberShipId();
-		return membershipID;
+		this.membershipId = getMemberShipId();
+		return membershipId;
+	}
+	public void setMemberShipId(int key){
+		this.membershipId = key;
 	}
 }

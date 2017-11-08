@@ -202,6 +202,26 @@ public class SearchController {
         return "result";
     }
     
+    @GetMapping("/memberId")
+    public String usersearchForm(Model model) {
+        model.addAttribute("memberId", new Search());
+        System.out.println("The GetMapping is running");
+        return "memberId";
+    }
+    
+    @PostMapping("/memberId")
+    public String userSearchSubmit(@ModelAttribute Search usersearch) {
+        System.out.println("The PostMapping is running");
+    	usersearch.checkmembership();
+    	if (usersearch.isUserAMember()){
+    		System.out.println("ismember");
+    		return "search";
+    	}
+    	else{
+    		System.out.println("not member");
+    		return "memberId";
+    	}
+    }
     @SuppressWarnings("unchecked")
 	private void addHotels(int userID, ArrayList<Object[]> hotels, String deptDate, String returnDate){
     	deptDate += " 00:00:00";

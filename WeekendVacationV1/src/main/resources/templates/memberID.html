@@ -5,14 +5,14 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-	<h1>Weekend Vacation</h1>
-    <form action="#" th:action="@{/memberID}" th:object="${memberID}" method="post">
-		<p>Do you have a membership?</p>
-        <p>Membership ID <input type="number" name="membershipID" th:field="*{membershipID}" /></p>
-    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
-    </form>
-    
-    <p th:test="${memberID}"/>
-    
+	<h1>Login</h1>
+	<form action="#" th:action="@{/memberId}" th:object="${memberId}" method="post">
+	<p><strong>Returning Customer?</strong><br>
+	User ID:
+	<input type="text" name="userId" th:field="*{userId}" />
+	<input type="submit" value="Submit" /></p>
+	</form>
+	<p><strong>New Customer?</strong><br>
+	<input type="submit" value="Join" onClick="" /></p>
 </body>
 </html>
