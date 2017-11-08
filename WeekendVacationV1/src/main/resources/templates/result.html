@@ -4,6 +4,8 @@
     <title>Getting Started: Handling Form Submission</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" type="text/css" href="results.css">
+    <script type="text/javascript" src="results.js"></script><meta charset="utf-8">
+    <script type="text/javascript" src="prototype.js"></script><meta charset="utf-8">
 </head>
 <body>
     <div>
@@ -12,7 +14,10 @@
     </div>
     <div id = "Hotel">
 	<h1>Click to see HOTELS</h1>
-    <!--<p th:text="'Hotel Name: ' + ${search.hotelName}" />
+    <input type="hidden" name = "3">
+    <!--
+    ${search.getNumHotels}
+    <p th:text="'Hotel Name: ' + ${search.hotelName}" />
     <p th:text="'Hotel Street: ' + ${search.hotelStreet}" />
     <p th:text="'Hotel City: ' + ${search.hotelCity}" />
     <p th:text="'Hotel State: ' + ${search.hotelState}" />

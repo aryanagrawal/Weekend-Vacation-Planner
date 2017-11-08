@@ -112,6 +112,10 @@ public class Search {
 	public ArrayList<Object[]> getHotels(){
 		return hotels;
 	}
+    
+    public int getNumHotels(){
+        return hotels.size();
+    }
 	
 	
 	public  ArrayList<Object[]> outboundFlights = new ArrayList<Object[]>();
