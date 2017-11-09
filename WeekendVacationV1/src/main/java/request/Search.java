@@ -41,6 +41,49 @@ public class Search {
 	public String totalFlightPrice;
 	
 	
+	///////////////////////////////////////Temporary Hotel Data///////////////////////////////////////////
+    public ArrayList<Object[]> temphotels = new ArrayList<Object[]>();
+    public String temphotelName = "temphotelName";
+    public String tempfullAddress = "tempfullAddress";
+    public String tempurl = "tempurl";
+    public String temphotelPrice = "temphotelPrice";
+    public String tempcurrency = "tempcurrency";
+    public String templinkToMoreRooms = "templinkToMoreRooms";
+    public String temphotelName2 = "temphotelName2";
+    public String tempfullAddress2 = "tempfullAddress2";
+    public String tempurl2 = "tempurl2";
+    public String temphotelPrice2 = "temphotelPrice2";
+    public String tempcurrency2 = "tempcurrency2";
+    public String templinkToMoreRooms2 = "templinkToMoreRooms2";
+
+	public Object[] temphotelDetails = new Object[]{
+        	temphotelName,
+        	tempfullAddress,
+        	tempurl,
+        	temphotelPrice,
+        	tempcurrency,
+        	templinkToMoreRooms
+        };
+	public Object[] temphotelDetails2 = new Object[]{
+        	temphotelName2,
+        	tempfullAddress2,
+        	tempurl2,
+        	temphotelPrice2,
+        	tempcurrency2,
+        	templinkToMoreRooms2
+        };
+    List<HotelRoom> temprooms = null;
+    List<Amenity> tempamenities = null;
+    public void settemphotels(){
+    	temphotels.add(new Object[]{tempamenities, temphotelDetails, temprooms});
+    	temphotels.add(new Object[]{tempamenities, temphotelDetails2, temprooms});
+    }
+
+
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	
 	/////////////////////////////////////////UserSearch///////////////////////////////////////////////////
 	private int membershipId;
 	private boolean isMember;

@@ -12,23 +12,23 @@
         <h1 id="Header">Showing Results for: </h1>
         <p th:text=${search.getOrigin()} + "' to '" + ${search.getDestination()} />
     </div>
+    <!--
     <div id = "Hotel">
 	<h1>Click to see HOTELS</h1>
-    <input type="hidden" name = "3">
-    <!--
-    ${search.getNumHotels}
+    <input type="hidden" name = "2">
+    ${search.getNumHotels}-->
     <p th:text="'Hotel Name: ' + ${search.hotelName}" />
     <p th:text="'Hotel Street: ' + ${search.hotelStreet}" />
     <p th:text="'Hotel City: ' + ${search.hotelCity}" />
     <p th:text="'Hotel State: ' + ${search.hotelState}" />
     <p th:text="'Hotel ZipCode: ' + ${search.hotelZip}" />
     <p th:text="'Hotel Country: ' + ${search.hotelCountry}" />
-    <p th:text="'Hotel Price: ' + ${search.hotelPrice}" />-->
-    </div>
+    <p th:text="'Hotel Price: ' + ${search.hotelPrice}" />
+    <!--</div>-->
     
-    <div id = "Flight">
-    <h1>Click to see FLIGHTS</h1>
-    <!--<p th:text="'Departure Flight Airline: ' + ${search.deptFlightAirline}" />
+    <!--<div id = "Flight">
+    <h1>Click to see FLIGHTS</h1>-->
+    <p th:text="'Departure Flight Airline: ' + ${search.hotelName}" />
     <p th:text="'Departure Flight Airport: ' + ${search.deptFlightAirport}" />
     <p th:text="'Departure Flight Time: ' + ${search.deptFlightTime}" />
     <br></br>
