@@ -1,15 +1,28 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html style = "padding: 0;" xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>Getting Started: Handling Form Submission</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
-<body>
+<body style = "margin: 0; 
+	  background-color: AZURE;">
 
 
-	<h1>Weekend Vacation</h1>
+	<h1 style = "width:100%; 
+				 padding-left: 2%; 
+				 margin: 0; 
+				 background-color: DARKRED; 
+				 color: WHITE;">
+		Weekend Vacation
+	</h1>
 	<form action="#" th:action="@{/search}" th:object="${search}"
-		method="post">
+		method="post" 
+		style = "margin: 2%; 
+				 padding: 2%;
+				 width: 33%;
+				 font-size: 100%;
+				 border-radius: 2%;
+				 background-color: ROSYBROWN;">
 
 		<p>
 			Origin <input type="text" name="origin" th:field="*{origin}" />
