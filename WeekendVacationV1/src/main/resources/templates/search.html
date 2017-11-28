@@ -8,14 +8,15 @@
 
 	<div style = "width: 50%;
 				  overflow: hidden;
-				  float: left; margin-right: 0;">
+				  float: left;
+				  margin-right: 0;">
 		<h1 style = "width: 100%;
 					 height: auto;
 					 float: right;
 					 text-align: right;
 					 border-right: solid;
 					 padding-right: 2%;
-					 margin-top: 35%;">
+					 margin-top: 25%;">
 			Weekend Planner
 		</h1>
 	</div>
@@ -24,7 +25,7 @@
 				  float: right;">
 		<h3 style = "float: left;
 					 padding-left: 0;
-					 margin-top: 38.5%;
+					 margin-top: 27%;
 					 margin-left: 0;">
 			Easy planning for last minute trips
 		</h3>
@@ -43,22 +44,22 @@
 			<div style = "width: 40%;
 						  float: left;
 						  overflow:hidden;">
-				<p style = "text-align: right;
-							margin: 2.5%;">
-					Origin<br>Destination
+				<p style = "text-align: right; margin: 2.5%;">
+					Origin<br />Destination
 				</p>
 			</div>
 			<div style = "width: 60%;
 						  float: right;
 						  overflow: hidden;
 						  text-align: left;">
-				<input type="text" name="origin" th:field="*{origin}" />
+				<input type="text" name="origin" th:field="*{origin}" style = "margin-bottom: 1%;"/>
+				<br />
 				<input type="text" name="destination" th:field="*{destination}" />
 			</div>
-			<br>
-			<hr style = "clear: both;">
+			<br />
+			<hr style = "clear: both;" />
 			<strong>Departure Date:</strong>
-			<br> 
+			<br /> 
 			<select name="deptMonth"
 				th:field="*{deptMonth}">
 				<option value="January">January</option>
@@ -112,9 +113,9 @@
 				<option value="2018">2018</option>
 				<option value="2019">2019</option>
 			</select> 
-			<br>
+			<br />
 			<strong>Return Date:</strong>
-			<br> 
+			<br /> 
 			<select name="returnMonth"
 				th:field="*{returnMonth}">
 				<option value="January">January</option>
